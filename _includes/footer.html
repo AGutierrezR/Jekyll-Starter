@@ -1,0 +1,19 @@
+<footer>
+  <div class="footer__copyright">
+    <div class="top">
+      <span>Diseñado y Desarrollado por</span>
+    </div>
+    <div class="bottom">
+      <span>{{ site.name }}</span>
+      <span class="emoji">✌️</span>
+      <span>2020</span>
+    </div>
+  </div>
+  <div class="footer__links">
+    {% for link in site.social %}
+    <a href="{{ link.url }}" target="_blank" title="{{ link.title }}">
+      <span>{{ link.title }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</footer>
