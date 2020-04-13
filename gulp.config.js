@@ -6,6 +6,13 @@
  */
 
 module.exports = {
+
+  // Styles
+  styleSrc: '_scss/main.scss',
+  styleDest: '_site/css',
+  styleJekyll: 'css',
+  outputStyle: 'expanded',
+
   // Watch file options
   watchTemplates: [
     '*.md',
@@ -14,5 +21,6 @@ module.exports = {
     '*.yml',
     '_data/*.yml',
     '_posts/*',
-  ], // Files that trigger Jekyll Build and Browser Reload
+  ],
+  watchStyles: '_scss/**/*'
 }

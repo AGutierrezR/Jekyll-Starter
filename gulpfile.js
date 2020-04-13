@@ -6,13 +6,15 @@
  *
  */
 const config = require('./gulp.config')
-
-const { watch, series, parallel } = require('gulp')
-
-const browserSync = require('browser-sync').create()
+const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll'
 const cp = require('child_process')
 
-const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll'
+const { src, dest, watch, series, parallel } = require('gulp')
+const browserSync = require('browser-sync').create()
+
+const sass = require('gulp-sass')
+const postcss = require('gulp-postcss')
+const prefix = require('autoprefixer')
 
 // Run Jekyll Build
 function jekyll_build(done) {
@@ -34,6 +36,21 @@ function server() {
   })
 
   watch(config.watchTemplates, series(jekyll_build, jekyll_rebuild))
+  watch(config.watchStyles, css)
 }
 
-exports.build = parallel(jekyll_build, server)
+function css() {
+  return src(config.styleSrc)
+    .pipe(
+      sass({
+        includePaths: ['scss'],
+        outputStyle: config.outputStyle,
+      })
+    )
+    .pipe(postcss([prefix()]))
+    .pipe(dest(config.styleDest))
+    .pipe(dest(config.styleJekyll))
+    .pipe(browserSync.stream())
+}
+
+exports.build = series(jekyll_build, server)
