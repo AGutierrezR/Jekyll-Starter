@@ -53,4 +53,5 @@ function css() {
     .pipe(browserSync.stream())
 }
 
-exports.build = series(jekyll_build, server)
+exports.serve = series(jekyll_build, css, server)
+exports.build = series(jekyll_build, css)
