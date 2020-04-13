@@ -1,7 +1,17 @@
+name: Andres Gutierrez
+title: Andres Gutierrez | Desarrollador Front-end
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
-title: "" # the name of your site, e.g. ACME Corp.
-
+email: agutierrez.codes@gmail.com
+social:
+  - title: Email
+    url: mailto:agutierrez.codes@gmail.com
+  - title: Github
+    url: https://github.com/AGutierrezR
+  - title: LinkedIn
+    url: https://www.linkedin.com/in/agutierrezr/
+  - title: Instagram
+    url: https://www.instagram.com/andy.codes/
 
 # Build settings
 markdown: kramdown
